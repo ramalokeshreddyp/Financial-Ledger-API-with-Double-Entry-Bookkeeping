@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equilibrium Ledger | Atomic Financial Integrity</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                indigo: '#6366f1',
+                slate: '#0f172a',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+      
+      :root {
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        background-color: #f8fafc;
+        background-image: 
+          radial-gradient(at 0% 0%, hsla(230,100%,98%,1) 0, transparent 50%), 
+          radial-gradient(at 50% 0%, hsla(210,100%,97%,1) 0, transparent 50%);
+        background-attachment: fixed;
+        transition: background-color 0.5s var(--ease-out-expo);
+      }
+
+      .dark body {
+        background-color: #020617;
+        background-image: 
+          radial-gradient(at 0% 0%, hsla(230,100%,10%,1) 0, transparent 50%), 
+          radial-gradient(at 50% 0%, hsla(250,100%,15%,1) 0, transparent 50%);
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        transition: background-color 0.5s var(--ease-out-expo), border-color 0.5s var(--ease-out-expo);
+      }
+
+      .dark .glass {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      @keyframes slide-up {
+        from { opacity: 0; transform: translateY(24px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes scale-in {
+        from { opacity: 0; transform: scale(0.96); }
+        to { opacity: 1; transform: scale(1); }
+      }
+
+      .animate-slide-up {
+        animation: slide-up 0.8s var(--ease-out-expo) forwards;
+      }
+
+      .animate-fade-in {
+        animation: fade-in 0.5s ease-out forwards;
+      }
+
+      .animate-scale-in {
+        animation: scale-in 0.6s var(--ease-out-expo) forwards;
+      }
+
+      .staggered-1 { animation-delay: 0.05s; }
+      .staggered-2 { animation-delay: 0.12s; }
+      .staggered-3 { animation-delay: 0.19s; }
+      .staggered-4 { animation-delay: 0.26s; }
+      .staggered-5 { animation-delay: 0.33s; }
+
+      .interactive-card {
+        transition: all 0.6s var(--ease-out-expo);
+      }
+
+      .interactive-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.08), 0 20px 40px -20px rgba(0, 0, 0, 0.04);
+      }
+
+      .dark .interactive-card:hover {
+        box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.5), 0 20px 40px -20px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-primary {
+        transition: all 0.4s var(--ease-out-expo);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px -6px rgba(99, 102, 241, 0.35);
+      }
+
+      .btn-primary:active {
+        transform: translateY(-1px) scale(0.94);
+        box-shadow: 0 4px 8px -2px rgba(99, 102, 241, 0.2);
+      }
+
+      .table-row-hover {
+        transition: background-color 0.3s var(--ease-out-expo), transform 0.3s var(--ease-out-expo);
+      }
+
+      .table-row-hover:hover {
+        background-color: rgba(241, 245, 249, 0.9) !important;
+        transform: scale(1.005) translateX(4px);
+      }
+
+      .dark .table-row-hover:hover {
+        background-color: rgba(30, 41, 59, 0.8) !important;
+      }
+
+      input, select {
+        transition: all 0.3s var(--ease-out-expo);
+      }
+
+      input:focus, select:focus {
+        transform: scale(1.01);
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="min-h-screen text-slate-900 dark:text-slate-100 overflow-x-hidden transition-colors duration-500">
+    <div id="root"></div>
+    <script>
+      // Apply theme immediately to prevent flash
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

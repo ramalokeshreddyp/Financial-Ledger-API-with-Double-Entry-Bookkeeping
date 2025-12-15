@@ -1,0 +1,95 @@
+{
+	"info": {
+		"name": "Equilibrium Ledger API",
+		"description": "Financial Ledger API for testing Double-Entry Bookkeeping and ACID integrity.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account API",
+			"item": [
+				{
+					"name": "POST /accounts (Create)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "json",
+							"json": {
+								"userId": "user_dev_01",
+								"type": "CHECKING",
+								"currency": "USD"
+							}
+						},
+						"url": "{{base_url}}/accounts"
+					}
+				},
+				{
+					"name": "GET /accounts/:id (Details & Balance)",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/accounts/acc_uuid_here"
+					}
+				},
+				{
+					"name": "GET /accounts/:id/ledger (Audit History)",
+					"request": {
+						"method": "GET",
+						"url": "{{base_url}}/accounts/acc_uuid_here/ledger"
+					}
+				}
+			]
+		},
+		{
+			"name": "Financial Engine API",
+			"item": [
+				{
+					"name": "POST /transfers (Double-Entry)",
+					"request": {
+						"method": "POST",
+						"body": {
+							"mode": "json",
+							"json": {
+								"sourceAccountId": "acc_01",
+								"destinationAccountId": "acc_02",
+								"amount": 5000,
+								"description": "Internal Transfer Test"
+							}
+						},
+						"url": "{{base_url}}/transfers"
+					}
+				},
+				{
+					"name": "POST /deposits (Credit)",
+					"request": {
+						"method": "POST",
+						"body": {
+							"mode": "json",
+							"json": {
+								"accountId": "acc_01",
+								"amount": 100000,
+								"description": "Initial Capital"
+							}
+						},
+						"url": "{{base_url}}/deposits"
+					}
+				},
+				{
+					"name": "POST /withdrawals (Debit & Guard)",
+					"request": {
+						"method": "POST",
+						"body": {
+							"mode": "json",
+							"json": {
+								"accountId": "acc_01",
+								"amount": 2500,
+								"description": "Atm Withdrawal Simulation"
+							}
+						},
+						"url": "{{base_url}}/withdrawals"
+					}
+				}
+			]
+		}
+	]
+}

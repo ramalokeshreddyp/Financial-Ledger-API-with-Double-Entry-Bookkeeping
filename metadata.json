@@ -1,0 +1,5 @@
+{
+  "name": "Equilibrium Ledger",
+  "description": "A robust financial ledger application implementing strict double-entry bookkeeping, ACID-like atomic transactions, and immutable audit trails for a mock banking system.",
+  "requestFramePermissions": []
+}
