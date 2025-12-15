@@ -1,1 +1,0 @@
-// This file should be removed from the root directory to avoid conflict with components/Dashboard.tsx
