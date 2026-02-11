@@ -301,6 +301,8 @@ const netInjections = transactions.reduce((sum, tx) => {
   return sum;
 }, 0);
 
+// Tolerance of 1 cent for floating-point precision errors in summation
+// Since amounts are stored as integers (cents), a difference < 1 means perfect match
 setSystemHealth({ 
   verified: Math.abs(totalBalance - netInjections) < 1,
   lastAudit: Date.now() 
